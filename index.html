@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blooming Moments</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+
+    <audio id="bg-music" loop>
+        <source src="assets/music/song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="petals-container"></div>
+    <div id="stars-container"></div>
+
+    <!-- OPENING SECTION -->
+    <section id="opening" class="opening-section">
+        <div class="bloom-loader" id="loader">
+            <div class="petal-load"></div>
+            <div class="petal-load"></div>
+            <div class="petal-load"></div>
+        </div>
+
+        <div class="opening-content">
+            <p class="opening-text" id="text-1">Tidak semua momen harus disimpan di galeri.</p>
+            
+            <div class="text-group" id="text-group-2">
+                <p class="opening-text">Beberapa lebih pantas dijadikan sebuah cerita.</p>
+                <h2 class="opening-name">Dinda Marsa Ghina</h2>
+                <button id="start-btn" class="premium-btn" style="margin-top: 20px;">Mulai Perjalanan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" class="hidden">
+        
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="glass-card fade-up">
+                <h1 class="hero-title">Blooming Moments</h1>
+                <p class="hero-subtitle">Untuk sebuah apresiasi kecil terhadap momen-momen yang terekam dengan baik.</p>
+            </div>
+            
+            <div class="scroll-indicator fade-up" style="transition-delay: 0.5s;">
+                <span class="scroll-text">Scroll perlahan</span>
+                <div class="scroll-arrow">↓</div>
+            </div>
+        </section>
+
+        <!-- PHOTO TIMELINE -->
+        <section class="photo-section">
+            <div class="photo-wrapper reveal-trigger">
+                <div class="img-frame">
+                    <img src="assets/images/foto1.jpeg" alt="Memory 1" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="photo-section">
+            <div class="photo-wrapper reveal-trigger">
+                <div class="img-frame">
+                    <img src="assets/images/foto2.jpeg" alt="Memory 2" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="photo-section">
+            <div class="photo-wrapper reveal-trigger">
+                <div class="img-frame">
+                    <img src="assets/images/foto3.jpeg" alt="Memory 3" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="photo-section">
+            <div class="photo-wrapper reveal-trigger">
+                <div class="img-frame">
+                    <img src="assets/images/foto4.jpeg" alt="Memory 4" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="photo-section">
+            <div class="photo-wrapper reveal-trigger">
+                <div class="img-frame">
+                    <img src="assets/images/foto5.jpeg" alt="Memory 5" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="photo-section">
+            <div class="photo-wrapper reveal-trigger">
+                <div class="img-frame">
+                    <img src="assets/images/foto6.jpeg" alt="Memory 6" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section class="photo-section">
+            <div class="photo-wrapper reveal-trigger">
+                <div class="img-frame">
+                    <img src="assets/images/foto7.jpeg" alt="Memory 7" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- ENDING SECTION -->
+        <section id="ending" class="ending-section reveal-trigger">
+            <div class="ending-content glass-card" style="padding: 40px; transform: translateY(0); opacity: 0;">
+                <p class="ending-text delay-1">Terima kasih sudah meluangkan waktu untuk melihat susunan memori ini.</p>
+                <p class="ending-text delay-2">Karena tidak semua hal indah harus dirayakan dengan meriah; beberapa cukup diingat dengan senyuman dan disyukuri secara sederhana.</p>
+                
+                <a href="https://www.instagram.com/dindamrrsa?igsh=cnRtazZ6dmlqbzN5" target="_blank" class="ig-btn delay-3">
+                    <i class="fab fa-instagram"></i> @dindamrrsa
+                </a>
+
+                <p class="ending-signature delay-4">— From Tobib</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
