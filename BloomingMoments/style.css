@@ -1,0 +1,205 @@
+:root {
+    --ivory-white: #FFFFF0;
+    --dark-bg: #0a0507; /* Sangat gelap untuk base */
+    --text-dark: #2C2C2C;
+    --gold-accent: #D4AF37;
+    --sage-green: #B2AC88;
+    --font-title: 'Cormorant Garamond', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--dark-bg);
+    color: var(--ivory-white);
+    overflow: hidden; 
+    transition: background-color 3s ease, color 3s ease;
+}
+
+/* GRADASI GELAP ELEGAN (MIDNIGHT ROSE) - Biar efek lampu nyala! */
+body.theme-light {
+    background: linear-gradient(-45deg, #11080a, #2b131e, #11080a, #1f0c15);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: var(--ivory-white); /* Teks tetap terang karena latar sekarang gelap */
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hidden { display: none !important; opacity: 0 !important; }
+
+#progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: #ff7eb3; width: 0%; z-index: 999; transition: width 0.1s ease-out; }
+
+/* OPENING & PREMIUM BTN */
+.opening-section { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: var(--dark-bg); display: flex; justify-content: center; align-items: center; z-index: 100; transition: opacity 1.5s ease-in-out, visibility 1.5s; }
+.bloom-loader { position: absolute; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; }
+.petal-load { position: absolute; width: 20px; height: 40px; background: radial-gradient(circle, var(--ivory-white) 0%, transparent 80%); border-radius: 50%; opacity: 0; filter: blur(2px); animation: bloom 3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.petal-load:nth-child(2) { transform: rotate(60deg); } .petal-load:nth-child(3) { transform: rotate(-60deg); }
+@keyframes bloom { 0% { opacity: 0; transform: scale(0.5) translateY(0); filter: blur(4px); } 50% { opacity: 0.8; transform: scale(1.2) translateY(-10px); filter: blur(1px); } 100% { opacity: 0; transform: scale(1.5) translateY(20px); filter: blur(6px); } }
+.opening-content { position: absolute; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.opening-text { font-family: var(--font-title); font-size: 1.8rem; font-weight: 400; letter-spacing: 1px; opacity: 0; transform: translateY(15px); transition: opacity 1.5s ease, transform 1.5s ease; }
+.text-group { display: flex; flex-direction: column; align-items: center; gap: 15px; opacity: 0; transform: translateY(15px); transition: opacity 1.5s ease, transform 1.5s ease; }
+
+.opening-name { font-family: var(--font-title); font-size: 3rem; color: #ff7eb3; letter-spacing: 2px; }
+
+.fade-in { opacity: 1 !important; transform: translateY(0) !important; }
+.fade-out { opacity: 0 !important; transform: translateY(-15px) !important; }
+.premium-btn { font-family: var(--font-body); font-size: 0.9rem; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: var(--ivory-white); background: transparent; border: 1px solid rgba(255, 255, 255, 0.3); padding: 12px 30px; border-radius: 30px; cursor: pointer; position: relative; overflow: hidden; transition: all 0.5s ease; }
+.premium-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent); transition: left 0.7s ease; }
+.premium-btn:hover { border-color: #ff7eb3; color: #ff7eb3; box-shadow: 0 0 15px rgba(255, 126, 179, 0.2); }
+.premium-btn:hover::before { left: 100%; }
+
+/* FALLING PETALS */
+#petals-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; overflow: hidden; opacity: 1; transition: opacity 3s ease; }
+.falling-petal { position: absolute; background-color: rgba(255, 126, 179, 0.3); border-radius: 15px 0 15px 0; box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5); pointer-events: none; animation: fall linear forwards; }
+@keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg) scale(0.5); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(110vh) rotate(360deg) scale(1.2); opacity: 0; } }
+
+/* HERO SECTION */
+.hero-section { position: relative; width: 100vw; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 2; }
+.glass-card { background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 126, 179, 0.2); border-radius: 20px; padding: 60px 40px; text-align: center; max-width: 600px; width: 90%; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); opacity: 0; transform: translateY(30px); transition: opacity 1.5s ease, transform 1.5s ease; color: inherit; }
+.hero-title { font-family: var(--font-title); font-size: 4rem; font-weight: 600; color: #ff7eb3; margin-bottom: 20px; letter-spacing: 2px; text-shadow: 0 0 15px rgba(255, 126, 179, 0.3); }
+.hero-subtitle { font-size: 1.1rem; font-weight: 300; line-height: 1.8; opacity: 0.9; }
+.glass-card.show { opacity: 1; transform: translateY(0); }
+.scroll-indicator { position: absolute; bottom: 40px; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; transform: translateY(20px); transition: opacity 1.5s ease, transform 1.5s ease; }
+.scroll-indicator.show { opacity: 1; transform: translateY(0); }
+.scroll-text { font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; color: #ff7eb3; font-weight: 500; }
+.scroll-arrow { font-size: 1.2rem; color: #ff7eb3; animation: bounce 2s infinite ease-in-out; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+/* PHOTO TIMELINE */
+.photo-section { position: relative; width: 100vw; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 50px 20px; z-index: 2; }
+.photo-wrapper { position: relative; width: 100%; display: flex; justify-content: center; align-items: center; }
+
+/* 
+   =========================================
+   EFEK LAMPU LIPLOP / BORDER CAHAYA BERGERAK 
+   ========================================= 
+*/
+.img-frame { 
+    position: relative;
+    max-width: 650px; 
+    width: 100%; 
+    border-radius: 16px; 
+    padding: 3px; /* Ketebalan garis cahaya */
+    overflow: hidden; /* Mengunci cahaya agar tidak meluber keluar */
+    opacity: 0; 
+    transform: scale(0.95) translateY(30px); 
+    filter: blur(10px); 
+    transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); 
+    z-index: 1;
+}
+
+/* Gradient cahaya yang berputar di background frame */
+.img-frame::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; 
+    width: 200%; height: 200%;
+    background: conic-gradient(
+        transparent, 
+        rgba(255, 117, 140, 0.1), 
+        #ff758c, /* Warna nyala lampu pink */
+        #ff7eb3, 
+        transparent 25%
+    );
+    animation: borderLight 3s linear infinite; /* Kecepatan muter lampu */
+    z-index: -2;
+}
+
+/* Background penutup di balik foto agar cahayanya cuma kelihatan di pinggir */
+.img-frame::after {
+    content: '';
+    position: absolute;
+    inset: 3px; /* Sama dengan ketebalan padding */
+    background-color: var(--dark-bg);
+    border-radius: 13px;
+    z-index: -1;
+}
+
+@keyframes borderLight {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.img-frame img { 
+    position: relative;
+    z-index: 2; /* Foto tampil paling atas */
+    width: 100%; 
+    height: auto; 
+    object-fit: cover; 
+    max-height: 80vh; 
+    display: block; 
+    border-radius: 13px; 
+    transform: scale(1.1); 
+    transition: transform 2s ease; 
+}
+
+/* Saat di-scroll masuk ke layar, nyalakan efek melayang & bayangan neon */
+.reveal-trigger.in-view .img-frame { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+    filter: blur(0); 
+    animation: photoFloat 5s ease-in-out infinite alternate;
+}
+.reveal-trigger.in-view .img-frame img { transform: scale(1); }
+
+@keyframes photoFloat {
+    0% { transform: translateY(0px); box-shadow: 0 5px 20px rgba(255, 126, 179, 0.2); }
+    100% { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(255, 126, 179, 0.5); }
+}
+
+/* ENDING SECTION */
+.ending-section { position: relative; width: 100vw; min-height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; padding: 20px; z-index: 2; }
+.ending-content { z-index: 3; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.reveal-trigger.in-view .ending-content { opacity: 1 !important; transform: translateY(0) !important; transition: all 1s ease; }
+
+.ending-text { font-family: var(--font-title); font-size: 1.8rem; line-height: 1.6; margin-bottom: 20px; opacity: 0; transform: translateY(20px); transition: all 1s ease; }
+
+.ig-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 30px 0;
+    padding: 12px 25px;
+    border: 1px solid rgba(255, 126, 179, 0.3);
+    border-radius: 30px;
+    color: var(--ivory-white);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    background: rgba(255, 126, 179, 0.05);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+.ig-btn:hover { border-color: #ff7eb3; color: #ff7eb3; background: rgba(255, 126, 179, 0.1); transform: translateY(-3px) !important; box-shadow: 0 0 15px rgba(255, 126, 179, 0.3); }
+.ending-signature { font-family: var(--font-body); font-size: 0.9rem; letter-spacing: 3px; opacity: 0; margin-top: 20px; transition: all 1s ease; }
+
+.reveal-trigger.in-view .delay-1 { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+.reveal-trigger.in-view .delay-2 { opacity: 1; transform: translateY(0); transition-delay: 1.5s; }
+.reveal-trigger.in-view .delay-3 { opacity: 1; transform: translateY(0); transition-delay: 2.5s; } 
+.reveal-trigger.in-view .delay-4 { opacity: 1; transform: translateY(0); transition-delay: 3.5s; } 
+
+/* Bintang-bintang di background (Malam) */
+#stars-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0; opacity: 0; transition: opacity 4s ease; }
+body.theme-end #stars-container { opacity: 1; }
+.star { position: absolute; background-color: #FFF; border-radius: 50%; animation: twinkle infinite ease-in-out alternate; }
+@keyframes twinkle { 0% { opacity: 0.2; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 5px #FFF; } }
+
+/* OPTIMASI HP */
+@media screen and (max-width: 768px) {
+    .opening-name { font-size: 2.2rem; }
+    .hero-title { font-size: 3rem; }
+    .photo-section { padding: 20px 15px; }
+    .img-frame { border-radius: 16px; width: 100%; }
+    .img-frame img { max-height: 85vh; border-radius: 13px; }
+    .ending-text { font-size: 1.4rem; }
+}
